@@ -26,6 +26,13 @@ public class WorkerController {
 
     @GetMapping("/{workerId}")
     public ResponseEntity<Worker> findById(@PathVariable Long workerId) {
+/*
+        try {
+            Thread.sleep(3000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+*/
         Optional<Worker> worker = workerRepository.findById(workerId);
         return worker.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
